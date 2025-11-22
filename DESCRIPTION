@@ -1,6 +1,6 @@
 Package: adfExplorer
 Title: Access and Manipulate Amiga Disk Files
-Version: 2.0.3
+Version: 2.1.0
 Authors@R: 
     c(
     person("Pepijn", "de Vries", role = c("aut", "cre"),
@@ -20,23 +20,24 @@ Description: Amiga Disk Files (ADF) are virtual
     read from and write to those files.
 License: GPL (>= 3)
 Encoding: UTF-8
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 LinkingTo: cpp11
-Collate: 'adfExplorer-package.R' 'blocks.R' 'compress.R' 'cpp11.R'
-        'connect_adf.R' 'demo.R' 'deprecated.R' 'move.R'
-        'device_info.R' 'device_create.R' 'helpers.R' 'directory.R'
-        'entry_info.R' 'remove.R' 's3_conn.R' 's3_methods.R'
+Collate: 'adfExplorer-package.R' 'move.R' 'device_info.R' 'bitmap.R'
+        'blocks.R' 'compress.R' 'cpp11.R' 'connect_adf.R' 'demo.R'
+        'device_create.R' 'helpers.R' 'directory.R' 'entry_info.R'
+        'remove.R' 's3_conn.R' 's3_methods.R' 'undelete.R'
         'virtual_path.R'
-Depends: R (>= 3.5.0)
+Depends: R (>= 4.1.0)
 Imports: methods, vctrs
-Suggests: adfExplorer, knitr, rmarkdown, testthat (>= 3.0.0)
+Suggests: AmigaFFH, knitr, ProTrackR2, rmarkdown, testthat (>= 3.0.0)
 VignetteBuilder: knitr
 URL: https://pepijn-devries.github.io/adfExplorer/
 BugReports: https://github.com/pepijn-devries/adfExplorer/issues
 Config/testthat/edition: 3
 NeedsCompilation: yes
-Packaged: 2025-01-07 22:01:35 UTC; vries171
-Author: Pepijn de Vries [aut, cre] (<https://orcid.org/0000-0002-7961-6646>),
+Packaged: 2025-11-22 12:10:25 UTC; vries171
+Author: Pepijn de Vries [aut, cre] (ORCID:
+    <https://orcid.org/0000-0002-7961-6646>),
   Laurent Clévy [aut, cph] (Creator of the original ADFlib library)
 Repository: CRAN
-Date/Publication: 2025-01-10 22:50:02 UTC
+Date/Publication: 2025-11-22 15:20:10 UTC

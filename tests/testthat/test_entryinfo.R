@@ -105,3 +105,15 @@ test_that("Multiple names can be set at once", {
     close(my_device)
   })
 })
+
+test_that("Entries can be listed", {
+  expect_no_error({
+    my_device <- demo_adf(write_protected = FALSE)
+    entries <- list_adf_entries(my_device, recursive = TRUE, nested = TRUE)
+    entries <- list_adf_entries(my_device)
+    entries <- list_adf_entries(my_device, "s")
+    entries <- list_adf_entries(my_device, virtual_path(my_device, "devs"))
+    entries <- list_adf_entries(virtual_path(my_device, "devs"))
+    close(my_device)
+  })
+})

@@ -1,8 +1,12 @@
+sink(tempfile("sink"))
+
 test_that("adf_file_con can be summarised", {
   expect_no_error({
     my_device <- demo_adf()
     con <- adf_file_con(my_device, "s/startup-sequence")
     summary(con)
+    fm <- format(con)
+    print(con)
     close(con)
     close(my_device)
   })
@@ -76,3 +80,33 @@ test_that("`writeBin` can write different types without problems", {
     close(my_device)
   })
 })
+
+test_that("We can format and print the virtual disk representation", {
+  expect_no_error({
+    my_device <- demo_adf()
+    md <- format(my_device)
+    print(my_device)
+    close(my_device)
+  })
+})
+
+test_that("We can format and print block", {
+  expect_no_error({
+    block <- new_adf_block()
+    bl <- format(block)
+    print(block)
+  })
+})
+
+test_that("We can format and print a virtual path", {
+  expect_no_error({
+    my_device <- demo_adf()
+    vp <- virtual_path(my_device, "s")
+    vpf <- format(vp)
+    vpf <- format(c(vp, vp))
+    print(vp)
+    close(my_device)
+  })
+})
+
+sink()

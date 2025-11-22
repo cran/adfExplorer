@@ -1,3 +1,12 @@
+adfExplorer 2.1.0
+-------------
+
+ * Added `get_adf_bitmap()`, `adf_dumpster_dive()` and
+   `salvage_adf_entry()`.
+ * Retired deprecated functions
+ * Improved test coverage
+ * Fix for CRAN issues
+
 adfExplorer 2.0.3
 -------------
 
@@ -29,11 +38,8 @@ adfExplorer v0.1.8
 
  * added adf.file.info, adf.file.mode, adf.file.time
    and adf.file.size methods.
-
  * added dir.exists.adf and improved adf.file.exists
- 
  * Corrections and updates in manual and vignettes
- 
  * Added `pkgdown` website
 
 adfExplorer v0.1.6
@@ -45,9 +51,7 @@ adfExplorer v0.1.5
 -------------
 
  * Added 'remove.adf.file' method
-
  * Updated manual and vignette
-
  * Minor correction to manual
 
 adfExplorer v0.1.4
@@ -59,13 +63,10 @@ adfExplorer v0.1.3
 -------------
 
  * Minor corrections to the manual.
-
  * Directories can now be created on the virtual Amiga
    disk with the 'dir.create.adf' method.
-
  * with the newly added method 'put.adf.file' it is now
    possible to put a file onto a virtual Amiga disk.
-
  * Functions 'rawToBitmap' and 'bitmapToRaw' have been
    improved and are now exported and documented.
 
@@ -73,12 +74,9 @@ adfExplorer v0.1.2
 -------------
 
  * Added adf.file.exists method.
- 
  * Modified 'displayRawData' to convert more special
    characters to dots.
-
  * Minor adjustments in the manual
-
  * Vignette contained r-code output with non-supported
    characters. As a quick fix the display of this output
    now is suppressed in the vignette.
@@ -87,7 +85,6 @@ adfExplorer v0.1.1
 -------------
 
 First release:
-
  * This is the first release that has basic functionality to
    - Read and write adf files
    - Detect the presence of a file system (Amiga OS 3.x and earlier)

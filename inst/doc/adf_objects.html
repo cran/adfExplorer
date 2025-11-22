@@ -49,7 +49,7 @@ overflow: visible;
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -60,7 +60,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -456,7 +456,7 @@ calling <code>adf_file_con</code>, you can either read and / or write to
 the connection. By default the connection is opened as read-only. You
 can use <code>readBin()</code> to read binary data from the
 connection.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">readBin</span>(con, <span class="st">&quot;raw&quot;</span>, 20L)</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">readBin</span>(con, <span class="st">&quot;raw&quot;</span>, <span class="dv">20</span><span class="dt">L</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co">#&gt;  [1] 69 6e 74 72 6f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</span></span></code></pre></div>
 <p>Note that <code>adf_file_con()</code> always opens the connection as
 ‘binary’, but you can also use it for reading and writing text. So
@@ -468,7 +468,7 @@ is located with <code>seek()</code>. You can also use it to set the
 offset to a specific location.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">seek</span>(con)</span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co">#&gt; [1] 20</span></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="fu">seek</span>(con, 30L)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="fu">seek</span>(con, <span class="dv">30</span><span class="dt">L</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt; [1] 30</span></span></code></pre></div>
 </div>
 <div id="end-of-life-1" class="section level3">
@@ -534,12 +534,12 @@ It will be initialised with null bytes. You can also coerce a
 <code>raw</code> <code>vector</code> to an <code>adf_block</code>.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>block1 <span class="ot">&lt;-</span> <span class="fu">new_adf_block</span>()</span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="do">## a block with random data</span></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>block2 <span class="ot">&lt;-</span> <span class="fu">as_adf_block</span>(<span class="fu">as.raw</span>(<span class="fu">sample.int</span>(<span class="at">n=</span>256L, <span class="at">size =</span> 512L, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> 1L))</span></code></pre></div>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>block2 <span class="ot">&lt;-</span> <span class="fu">as_adf_block</span>(<span class="fu">as.raw</span>(<span class="fu">sample.int</span>(<span class="at">n=</span><span class="dv">256</span><span class="dt">L</span>, <span class="at">size =</span> <span class="dv">512</span><span class="dt">L</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="dv">1</span><span class="dt">L</span>))</span></code></pre></div>
 <p>You can also intialise a block by reading it from a virtual
 device</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="do">## This will read the initial &#39;boot&#39; block</span></span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="do">## from the virtual device</span></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>block3 <span class="ot">&lt;-</span> <span class="fu">read_adf_block</span>(my_device, 0L)</span></code></pre></div>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>block3 <span class="ot">&lt;-</span> <span class="fu">read_adf_block</span>(my_device, <span class="dv">0</span><span class="dt">L</span>)</span></code></pre></div>
 </div>
 <div id="what-can-i-do-with-it-3" class="section level3">
 <h3>What can I do with it?</h3>
@@ -557,6 +557,9 @@ there is no actual link to the virtual device, removing an
 <code>adf_block</code> class object from memory does not affect your
 virtual device.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">rm</span>(block1, block2, block3)</span></code></pre></div>
+<p>Finally, let’s clean up after our selves by closing the opened
+device:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">close</span>(my_device)</span></code></pre></div>
 </div>
 </div>
 
